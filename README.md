@@ -1,29 +1,40 @@
-# Notifier
+# assistant-notifier
 
 Ce plugin de [`assistant-plugins`](https://aymkdn.github.io/assistant-plugins/) permet de faire parler son Google Home.
 
 ## Installation
 
-  1. Installer [`assistant-plugins`](https://aymkdn.github.io/assistant-plugins/) si ce n'est pas déjà fait
-  2. Pour Windows, télécharger [`install_notifier.bat`](https://github-proxy.kodono.info/?q=https://raw.githubusercontent.com/Aymkdn/assistant-notifier/master/install_notifier.bat&download=install_notifier.bat) dans le répertoire `assistant-plugins`, puis l'exécuter en double-cliquant dessus.  
-  Pour Linux/MacOS, ouvrir une console dans le répertoire `assistant-plugins` et taper : `npm install assistant-notifier`  
+Si vous n'avez pas installé [`assistant-plugins`](https://aymkdn.github.io/assistant-plugins/), alors il faut le faire, et sélectionner **notifier** comme plugin.
+
+Si vous avez déjà installé [`assistant-plugins`](https://aymkdn.github.io/assistant-plugins/), et que vous souhaitez ajouter ce plugin, alors :
+  - Pour Windows, télécharger [`install_notifier.bat`](https://github-proxy.kodono.info/?q=https://raw.githubusercontent.com/Aymkdn/assistant-notifier/master/install_notifier.bat&download=install_notifier.bat) dans le répertoire `assistant-plugins`, puis l'exécuter en double-cliquant dessus.  
+  - Pour Linux/MacOS, ouvrir une console dans le répertoire `assistant-plugins` et taper : `npm install assistant-notifier --save --loglevel error && npm run-script postinstall`  
 
 ## Configuration
 
-Éditer le fichier `configuration.json` et y indiquer l'adresse IP de votre Google Home.
+Éditer le fichier `configuration.json` du répertoire `assistant-plugins` et y indiquer l'adresse IP de votre Google Home.
 
-Cette information se trouve sur l'application Google Home de votre téléphone :
+l'adresse IP de votre Google Home se trouve sur l'application Google Home de votre téléphone :
 
   1) Ouvrir l'application Google Home
   2) Cliquer sur l'icône en haut à droite (*un téléviseur avec une enceinte*)
   3) Votre appareil Google Home devrait apparaitre
   4) Cliquer sur les *trois points* de votre appareil et choisir **Paramètres**
   5) Descendre tout en bas jusqu'à la section **Informations**
-  6) Utiliser l'adresse IP qui est donnée (tout en bas normalement)
+  6) Utiliser l'adresse IP qui est donnée (tout en bas)
+  
+La section du fichier `configuration.json` qui nous intéresse devrait ressembler à la partie ci-dessous (ici on va dire que l'IP est 192.168.0.13) :
+```javascript
+  "plugins": {
+    "notifier": {
+      "hosts":"192.168.0.13"
+    }
+  }
+```
 
 ## Utilisation
 
-Son intérêt est surtout d'être appelé par les autres plugins (par exemple dans le plugin `assistant-tam`) grâce à : `this.plugins.notifier("message à faire dire")`
+Son intérêt est surtout d'être appelé par les autres plugins (par exemple dans le plugin `assistant-freebox`) grâce à : `this.plugins.notifier("message à faire dire")`
 
 Sinon, depuis IFTTT, voici un exemple de comment procéder :
 
