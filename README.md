@@ -1,6 +1,12 @@
 # Notifier
 
-Ce plugin permet de faire parler son Google Home.
+Ce plugin de [`assistant-plugins`](https://aymkdn.github.io/assistant-plugins/) permet de faire parler son Google Home.
+
+## Installation
+
+  1. Installer [`assistant-plugins`](https://aymkdn.github.io/assistant-plugins/) si ce n'est pas déjà fait
+  2. Pour Windows, télécharger [`install_notifier.bat`](https://github-proxy.kodono.info/?q=https://raw.githubusercontent.com/Aymkdn/assistant-notifier/master/install_notifier.bat&download=install_notifier.bat) dans le répertoire `assistant-plugins`, puis l'exécuter en double-cliquant dessus.  
+  Pour Linux/MacOS, ouvrir une console dans le répertoire `assistant-plugins` et taper : `npm install assistant-notifier`  
 
 ## Configuration
 

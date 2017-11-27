@@ -6,6 +6,7 @@ var AssistantNotifier = function(configuration) {
 }
 AssistantNotifier.prototype.init = function(plugins) {
   this.plugins = plugins;
+  if (!this.host) return Promise.reject("[assistant-notifier] Erreur : vous devez configurer ce plugin !");
   return Promise.resolve(this);
 };
 
@@ -48,13 +49,12 @@ AssistantNotifier.prototype.action = function(text) {
 /**
  * Initialisation du plugin
  *
+ * @param  {Object} configuration La configuration
  * @param  {Object} plugins Un objet qui contient tous les plugins chargés
  * @return {Promise} resolve(this)
  */
-exports.init=function(plugins) {
-  var configuration = require('./configuration');
-  var an = new AssistantNotifier(configuration);
-  return an.init(plugins)
+exports.init=function(configuration, plugins) {
+  return new AssistantNotifier(configuration).init(plugins)
   .then(function(resource) {
     console.log("[assistant-notifier] Plugin chargé et prêt.");
     return resource;
