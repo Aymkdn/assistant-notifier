@@ -17,11 +17,11 @@ Si vous avez déjà installé [`assistant-plugins`](https://aymkdn.github.io/ass
 
 l'adresse IP de votre Google Home se trouve sur l'application Google Home de votre téléphone :
 
-  1) Ouvrir l'application Google Home
-  2) Cliquer sur l'icône en haut à droite (*un téléviseur avec une enceinte*)
-  3) Votre appareil Google Home devrait apparaitre
-  4) Cliquer sur les *trois points* de votre appareil et choisir **Paramètres**
-  5) Descendre tout en bas jusqu'à la section **Informations**
+  1) Ouvrir l'application Google Home  
+  2) Cliquer sur l'icône en haut à droite (*un téléviseur avec une enceinte*)  
+  3) Votre appareil Google Home devrait apparaitre  
+  4) Cliquer sur les *trois points* de votre appareil et choisir **Paramètres**  
+  5) Descendre tout en bas jusqu'à la section **Informations**  
   6) Utiliser l'adresse IP qui est donnée (tout en bas)
   
 La section du fichier `configuration.json` qui nous intéresse devrait ressembler à la partie ci-dessous (ici on va dire que l'IP est 192.168.0.13) :
