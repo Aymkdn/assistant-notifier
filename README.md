@@ -39,17 +39,17 @@ Son intérêt est surtout d'être appelé par les autres plugins (par exemple da
 
 Sinon, depuis IFTTT, voici un exemple de comment procéder :
 
-  0) Suivre la procédure principale pour vérifier que `assistant-plugins` est bien lancé  
-  1) Créer une nouvelle *applet* dans IFTTT : [https://ifttt.com/create](https://ifttt.com/create)  
-  2) Cliquer sur **this** puis choisir **Google Assistant**  
-  3) Choisir la carte **Say a phrase with a text ingredient**  
-  4) Dans *« What do you want to say? »* mettre une phrase, par exemple : `répète la phrase $`  
+  1) Suivre la procédure principale pour vérifier que `assistant-plugins` est bien lancé  
+  2) Créer une nouvelle *applet* dans IFTTT : [https://ifttt.com/create](https://ifttt.com/create)  
+  3) Cliquer sur **this** puis choisir **Google Assistant**  
+  4) Choisir la carte **Say a phrase with a text ingredient**  
+  5) Dans *« What do you want to say? »* mettre une phrase, par exemple : `répète la phrase $`  
      Le symbôle `$` sera remplacé par Google  
-  5) Remplir les autres champs de la carte  
-  6) Maintenant, cliquer sur **that** puis choisir **Pushbullet**  
-  7) Choisir la carte **Push a Note**  
-  8) Dans le champs *« Title »*, mettre `Assistant`  
-  9) Dans le champs *« Message »*, mettre `notifier_{{TextField}}`  
-  10) Enregistrer puis cliquer sur **Finish**  
-  11) Dites : « OK Google, répète la phrase voilà une belle journée »  
-  12) Google Home va dire : « voilà une belle journée »  
+  6) Remplir les autres champs de la carte  
+  7) Maintenant, cliquer sur **that** puis choisir **Pushbullet**  
+  8) Choisir la carte **Push a Note**  
+  9) Dans le champs *« Title »*, mettre `Assistant`  
+  10) Dans le champs *« Message »*, mettre `notifier_{{TextField}}`  
+  11) Enregistrer puis cliquer sur **Finish**  
+  12) Dites : « OK Google, répète la phrase voilà une belle journée »  
+  13) Google Home va dire : « voilà une belle journée »  
