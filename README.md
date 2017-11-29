@@ -49,7 +49,7 @@ Sinon, depuis IFTTT, voici un exemple de comment procéder :
   7) Maintenant, cliquer sur **that** puis choisir **Pushbullet**  
   8) Choisir la carte **Push a Note**  
   9) Dans le champs *« Title »*, mettre `Assistant`  
-  10) Dans le champs *« Message »*, mettre `notifier_{{TextField}}`  
+  10) Dans le champs *« Message »*, mettre `notifier_\{\{TextField\}\}`  
   11) Enregistrer puis cliquer sur **Finish**  
   12) Dites : « OK Google, répète la phrase voilà une belle journée »  
   13) Google Home va dire : « voilà une belle journée »  
