@@ -2,6 +2,8 @@
 
 Ce plugin de [`assistant-plugins`](https://aymkdn.github.io/assistant-plugins/) permet de faire parler son Google Home.
 
+**Ne pas l'installer si vous ne possédez pas de Google Home !**
+
 ## Installation
 
 Si vous n'avez pas installé [`assistant-plugins`](https://aymkdn.github.io/assistant-plugins/), alors il faut le faire, et sélectionner **notifier** comme plugin.
