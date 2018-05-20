@@ -68,8 +68,8 @@ Sinon, depuis IFTTT, voici un exemple de comment procéder :
   8. Choisir la carte **Push a Note**  
   9. Dans le champs *« Title »*, mettre `Assistant`  
   10. Dans le champs *« Message »*, mettre `notifier_\{\{TextField\}\}` (si plusieurs Google Home sont configurés, ils diffuseront tous le message)  
-      Si plusieurs Google Home configués, pour en cibler un ou plusieurs il faudra utiliser la notation suivante : `notifier_\{NOM_GH1,NOM_GH2\} message à lire`...  
-      Par exemple : `notifier_\{salon,chambre d'alexandre\} il est l'heure du dîner... à table !`  
+      Si **plusieurs Google Home** configués, pour en cibler un ou plusieurs il faudra utiliser la notation suivante : `notifier_{NOM_GH1,NOM_GH2} message à lire`...  
+      Par exemple : `notifier_{salon,chambre d'alexandre} il est l'heure du dîner... à table !`  
   11. Enregistrer puis cliquer sur **Finish**  
   12. Dites : « OK Google, répète la phrase voilà une belle journée »  
   13. Google Home va dire : « voilà une belle journée »  
