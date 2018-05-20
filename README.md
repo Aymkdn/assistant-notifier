@@ -30,10 +30,26 @@ La section du fichier `configuration.json` qui nous intéresse devrait ressemble
 ```javascript
   "plugins": {
     "notifier": {
-      "hosts":"192.168.0.13"
+      "host":"192.168.0.13"
     }
   }
 ```
+
+Si **vous avez plusieurs Google Home**, il est possible de les configurer et cibler. Pour ce fait, le fichier de configuration doit ressembler à ça (indiquer le nom et l'IP associée pour chaque device) :
+```javascript
+  "plugins": {
+    "notifier": {
+      "host": {
+        "salon":"192.168.0.13",
+        "cuisine":"192.168.0.14",
+        "chambre d'alexandre":"192.168.0.10",
+        "chambre des parents":"192.168.0.11"
+      }
+    }
+  }
+```
+
+Des questions ? Merci de les poser là : [https://github.com/Aymkdn/assistant-plugins/issues/](https://github.com/Aymkdn/assistant-plugins/issues/)
 
 ## Utilisation
 
@@ -51,7 +67,9 @@ Sinon, depuis IFTTT, voici un exemple de comment procéder :
   7) Maintenant, cliquer sur **that** puis choisir **Pushbullet**  
   8) Choisir la carte **Push a Note**  
   9) Dans le champs *« Title »*, mettre `Assistant`  
-  10) Dans le champs *« Message »*, mettre `notifier_\{\{TextField\}\}`  
+  10) Dans le champs *« Message »*, mettre `notifier_\{\{TextField\}\}` (si plusieurs Google Home sont configurés, ils diffuseront tous le message)  
+      Si plusieurs Google Home configués, pour en cibler un ou plusieurs il faudra utiliser la notation suivante : `notifier_\{NOM_GH1,NOM_GH2\} message à lire`...  
+      Par exemple : `notifier_\{salon,chambre d'alexandre\} il est l'heure du dîner... à table !`  
   11) Enregistrer puis cliquer sur **Finish**  
   12) Dites : « OK Google, répète la phrase voilà une belle journée »  
   13) Google Home va dire : « voilà une belle journée »  
