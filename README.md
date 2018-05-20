@@ -17,7 +17,7 @@ Si vous avez déjà installé [`assistant-plugins`](https://aymkdn.github.io/ass
 
 Éditer le fichier `configuration.json` du répertoire `assistant-plugins` et y indiquer l'adresse IP de votre Google Home.
 
-l'adresse IP de votre Google Home se trouve sur l'application Google Home de votre téléphone :
+L'adresse IP du Google Home se trouve sur l'application Google Home de votre téléphone :
 
   1) Ouvrir l'application Google Home  
   2) Cliquer sur l'icône en haut à droite (*un téléviseur avec une enceinte*)  
