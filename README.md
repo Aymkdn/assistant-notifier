@@ -19,12 +19,12 @@ Si vous avez déjà installé [`assistant-plugins`](https://aymkdn.github.io/ass
 
 L'adresse IP du Google Home se trouve sur l'application Google Home de votre téléphone :
 
-  1) Ouvrir l'application Google Home  
-  2) Cliquer sur l'icône en haut à droite (*un téléviseur avec une enceinte*)  
-  3) Votre appareil Google Home devrait apparaitre  
-  4) Cliquer sur les *trois points* de votre appareil et choisir **Paramètres**  
-  5) Descendre tout en bas jusqu'à la section **Informations**  
-  6) Utiliser l'adresse IP qui est donnée (tout en bas)
+  1. Ouvrir l'application Google Home  
+  2. Cliquer sur l'icône en haut à droite (*un téléviseur avec une enceinte*)  
+  3. Votre appareil Google Home devrait apparaitre  
+  4. Cliquer sur les *trois points* de votre appareil et choisir **Paramètres**  
+  5. Descendre tout en bas jusqu'à la section **Informations**  
+  6. Utiliser l'adresse IP qui est donnée (tout en bas)
   
 La section du fichier `configuration.json` qui nous intéresse devrait ressembler à la partie ci-dessous (ici on va dire que l'IP est 192.168.0.13) :
 ```javascript
@@ -57,19 +57,19 @@ Son intérêt est surtout d'être appelé par les autres plugins (par exemple da
 
 Sinon, depuis IFTTT, voici un exemple de comment procéder :
 
-  1) Suivre la procédure principale pour vérifier que `assistant-plugins` est bien lancé  
-  2) Créer une nouvelle *applet* dans IFTTT : [https://ifttt.com/create](https://ifttt.com/create)  
-  3) Cliquer sur **this** puis choisir **Google Assistant**  
-  4) Choisir la carte **Say a phrase with a text ingredient**  
-  5) Dans *« What do you want to say? »* mettre une phrase, par exemple : `répète la phrase $`  
+  1. Suivre la procédure principale pour vérifier que `assistant-plugins` est bien lancé  
+  2. Créer une nouvelle *applet* dans IFTTT : [https://ifttt.com/create](https://ifttt.com/create)  
+  3. Cliquer sur **this** puis choisir **Google Assistant**  
+  4. Choisir la carte **Say a phrase with a text ingredient**  
+  5. Dans *« What do you want to say? »* mettre une phrase, par exemple : `répète la phrase $`  
      Le symbôle `$` sera remplacé par Google  
-  6) Remplir les autres champs de la carte  
-  7) Maintenant, cliquer sur **that** puis choisir **Pushbullet**  
-  8) Choisir la carte **Push a Note**  
-  9) Dans le champs *« Title »*, mettre `Assistant`  
-  10) Dans le champs *« Message »*, mettre `notifier_\{\{TextField\}\}` (si plusieurs Google Home sont configurés, ils diffuseront tous le message)  
+  6. Remplir les autres champs de la carte  
+  7. Maintenant, cliquer sur **that** puis choisir **Pushbullet**  
+  8. Choisir la carte **Push a Note**  
+  9. Dans le champs *« Title »*, mettre `Assistant`  
+  10. Dans le champs *« Message »*, mettre `notifier_\{\{TextField\}\}` (si plusieurs Google Home sont configurés, ils diffuseront tous le message)  
       Si plusieurs Google Home configués, pour en cibler un ou plusieurs il faudra utiliser la notation suivante : `notifier_\{NOM_GH1,NOM_GH2\} message à lire`...  
       Par exemple : `notifier_\{salon,chambre d'alexandre\} il est l'heure du dîner... à table !`  
-  11) Enregistrer puis cliquer sur **Finish**  
-  12) Dites : « OK Google, répète la phrase voilà une belle journée »  
-  13) Google Home va dire : « voilà une belle journée »  
+  11. Enregistrer puis cliquer sur **Finish**  
+  12. Dites : « OK Google, répète la phrase voilà une belle journée »  
+  13. Google Home va dire : « voilà une belle journée »  
