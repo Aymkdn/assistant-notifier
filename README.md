@@ -36,7 +36,7 @@ La section du fichier `configuration.json` qui nous intéresse devrait ressemble
   }
 ```
 
-Si **vous avez plusieurs Google Home**, il est possible de les configurer et cibler. Pour ce fait, le fichier de configuration doit ressembler à ça (indiquer le nom et l'IP associée pour chaque device) :
+Si **vous avez plusieurs Google Home**, il est possible de les configurer puis de les cibler. Pour ce faire, le fichier de configuration doit ressembler à ça (indiquer un nom et l'IP associée pour chaque device) :
 ```javascript
   "plugins": {
     "notifier": {
