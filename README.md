@@ -21,10 +21,9 @@ Si vous avez déjà installé [`assistant-plugins`](https://aymkdn.github.io/ass
 
 L'adresse IP du Google Home se trouve sur l'application Google Home de votre téléphone :
 
-  1. Ouvrir l'application Google Home  
-  2. Cliquer sur l'icône en haut à droite (*un téléviseur avec une enceinte*)  
-  3. Votre appareil Google Home devrait apparaitre  
-  4. Cliquer sur les *trois points* de votre appareil et choisir **Paramètres**  
+  1. Ouvrir l'application Home de Google  
+  2. Cliquer sur l'icône du Google Home souhaité  
+  3. Cliquer sur l'icône "roue dentée" en haut à droite pour accéder aux **Paramètres**  
   5. Descendre tout en bas jusqu'à la section **Informations**  
   6. Utiliser l'adresse IP qui est donnée (tout en bas)
   
