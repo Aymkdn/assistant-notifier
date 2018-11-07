@@ -1,10 +1,15 @@
 var Client = require('castv2-client').Client;
 var DefaultMediaReceiver = require('castv2-client').DefaultMediaReceiver;
 var GoogleTTS = require('google-tts-api');
+var request = require('request-promise-native');
+
 var AssistantNotifier = function(configuration) {
   this.host = configuration.host;
+  this.voice = configuration.voice;
 }
+
 AssistantNotifier.prototype.init = function(plugins) {
+  var _this=this;
   this.plugins = plugins;
   if (!this.host) return Promise.reject("[assistant-notifier] Erreur : vous devez configurer ce plugin !");
   return Promise.resolve(this);
@@ -42,8 +47,9 @@ AssistantNotifier.prototype.action = function(text) {
     }
 
     console.log("[assistant-notifier] ("+names+") Lecture du message : "+text);
+
     // on génère le texte
-    GoogleTTS(text, "fr-FR", 1)
+    _this.generateTTS(text)
     .then(function(url) {
       // pour chaque Google Home
       gh.forEach(function(host) {
@@ -72,6 +78,34 @@ AssistantNotifier.prototype.action = function(text) {
     })
   })
 };
+
+/**
+ * Génére un son à partir de texte, selon le service souhaité
+ *
+ * @param  {String} text
+ * @return {Promise} Retourne l'URL vers le son qui sera lu par le Google Home
+ */
+AssistantNotifier.prototype.generateTTS = function(text) {
+  if (!this.voice) {
+    // si pas de voix, on utilise Google TTS
+    return GoogleTTS(text, "fr-FR", 1);
+  } else {
+    // si une voix, on utilise le service associé
+    return request({
+      method:"POST",
+      url: "https://assistant.kodono.info/notifier.php",
+      body:JSON.stringify({
+        d:{
+          voice:this.voice,
+          texte:text
+        }
+      })
+    })
+    .then(function(url) {
+      return url;
+    })
+  }
+}
 
 /**
  * Initialisation du plugin

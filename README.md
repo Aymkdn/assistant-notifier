@@ -15,6 +15,8 @@ Si vous avez déjà installé [`assistant-plugins`](https://aymkdn.github.io/ass
 
 ## Configuration
 
+### Paramètre `host` (obligatoire)
+
 Éditer le fichier `configuration.json` du répertoire `assistant-plugins` et y indiquer l'adresse IP de votre Google Home.
 
 L'adresse IP du Google Home se trouve sur l'application Google Home de votre téléphone :
@@ -49,7 +51,30 @@ Si **vous avez plusieurs Google Home**, il est possible de les configurer et cib
   }
 ```
 
-Des questions ? Merci de les poser là : [https://github.com/Aymkdn/assistant-plugins/issues/](https://github.com/Aymkdn/assistant-plugins/issues/)
+### Paramètre `voice` (optionnel)
+
+Par défaut, `notifier` utilise la voix produite par le site https://translate.google.fr. Suite à la proposition de [jzarca01](https://github.com/jzarca01/) il est également possible d'utiliser la voix d'IBM ([qu'il est possible de tester/écouter ici](https://text-to-speech-demo.ng.bluemix.net/)).
+
+Pour cela il faut s'inscrire et obtenir une clé :
+  1. Se rendre sur https://www.ibm.com/watson/services/text-to-speech/
+  2. Cliquer sur **"Get Started for Free"**
+  3. S'inscrire puis valider son email
+  4. On utilisera le plan gratuit qui permet la synthèse de 10 000 lettres par mois
+  5. Une fois connecté au site, cliquer sur le bouton "Créer" en bas à droite
+  6. Vous devriez tomber sur une page qui indique **"Clé API"** et qu'il est possible de copier en cliquant sur l'icone à droite
+  7. Dans le fichier `configuration.json` on va alors inscrire la `source` (à savoir *"IBM@fr-FR_ReneeVoice"*) et la `key` :
+
+```javascript
+"plugins": {
+  "notifier": {
+    "host": "192.168.0.13",
+    "voice":{
+      "source":"IBM@fr-FR_ReneeVoice",
+      "key":"la clé API récupérée sur le site IBM"
+    }
+  }
+}
+```
 
 ## Utilisation
 
