@@ -86,6 +86,8 @@ AssistantNotifier.prototype.action = function(text) {
  * @return {Promise} Retourne l'URL vers le son qui sera lu par le Google Home
  */
 AssistantNotifier.prototype.generateTTS = function(text) {
+  // si le texte commence par "http" alors on le retourne car on considère que c'est déjà une URL
+  if (text.toLowerCase().startsWith("http")) return Promise.resolve(text);
   if (!this.voice) {
     // si pas de voix, on utilise Google TTS
     return GoogleTTS(text, "fr-FR", 1);
