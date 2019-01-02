@@ -1,6 +1,6 @@
 {
   "name": "assistant-notifier",
-  "version": "2.1.5",
+  "version": "2.1.6",
   "description": "Plugin Notifier pour un Assistant via le package assistant-plugins",
   "author": "aymkdn",
   "main":"notifier.js",

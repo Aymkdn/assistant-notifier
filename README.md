@@ -50,6 +50,20 @@ Si **vous avez plusieurs Google Home**, il est possible de les configurer puis d
   }
 ```
 
+### Paramètre `volume` (optionnel)
+
+Il est possible de définir le volume du message qui sera lu par le Google Home. Il doit s'agir d'un nombre entre 0 et 100 (représentant le pourcentage du volume). Si ce paramètre n'est pas spécifié, alors le message est lu avec le volume courant du Google Home.
+
+Par exemple, pour que le message soit lu à 80% du volume : 
+```javascript
+"plugins": {
+  "notifier": {
+    "host": "192.168.0.13",
+    "volume": 80
+  }
+}
+```
+
 ### Paramètre `voice` (optionnel)
 
 Par défaut, `notifier` utilise la voix produite par le site https://translate.google.fr. Suite à la proposition de [jzarca01](https://github.com/jzarca01/) il est également possible d'utiliser la voix d'IBM ([qu'il est possible de tester/écouter ici](https://text-to-speech-demo.ng.bluemix.net/)).

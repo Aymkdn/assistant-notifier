@@ -6,6 +6,7 @@ var request = require('request-promise-native');
 var AssistantNotifier = function(configuration) {
   this.host = configuration.host;
   this.voice = configuration.voice;
+  this.volume = typeof configuration.volume === "undefined" ? -1 : configuration.volume;
 }
 
 AssistantNotifier.prototype.init = function(plugins) {
@@ -14,6 +15,24 @@ AssistantNotifier.prototype.init = function(plugins) {
   if (!this.host) return Promise.reject("[assistant-notifier] Erreur : vous devez configurer ce plugin !");
   return Promise.resolve(this);
 };
+
+/**
+ * Permet de passer sur un système de Promise plutôt que de callback
+ *
+ * @param  {Object} obj   Vraisemblablement il s'agit de "client"
+ * @param  {String} fct   Le nom de la fonction de l'objet à appeler
+ * @param  {Object|String} param Les paramètres associés
+ * @return {Promise}
+ */
+AssistantNotifier.prototype.prom = function(obj, fct, param) {
+  return new Promise(function(res, rej) {
+    var callback = function(err, result) {
+      if (err) rej(err);
+      else res(result);
+    }
+    obj[fct](param || callback, callback);
+  })
+}
 
 /**
  * Fonction appelée par le système central
@@ -49,30 +68,57 @@ AssistantNotifier.prototype.action = function(text) {
     console.log("[assistant-notifier] ("+names+") Lecture du message : "+text);
 
     // on génère le texte
+    var currentVolume = {};
     _this.generateTTS(text)
     .then(function(url) {
       // pour chaque Google Home
       gh.forEach(function(host) {
         var client = new Client();
-        client.connect(host, function() {
-          client.launch(DefaultMediaReceiver, function(err, player) {
-            var media = {
-              contentId: url,
-              contentType: 'audio/mp3',
-              streamType: 'BUFFERED'
-            };
-            player.load(media, {
-              autoplay: true
-            }, function(err, status) {
-              player.on('status', function(status) {
-                if (status.playerState == "IDLE") {
-                  player.stop();
+        currentVolume[host] = -1;
+        _this.prom(client, 'connect', host)
+        .then(function() {
+          if (_this.volume > -1) {
+            // on retrouve le volume courant
+            return _this.prom(client, 'getVolume')
+            .then(function(status) {
+              currentVolume[host] = status.level;
+              //console.log("[assistant-notifier] Le volume courant sur "+host+" est "+Math.round(currentVolume[host]*100)+"%");
+              return _this.prom(client, 'setVolume', {level:_this.volume/100})
+            })
+          } else {
+            return Promise.resolve();
+          }
+        })
+        .then(function() {
+          return _this.prom(client, 'launch', DefaultMediaReceiver)
+        })
+        .then(function(player) {
+          var media = {
+            contentId: url,
+            contentType: 'audio/mp3',
+            streamType: 'BUFFERED'
+          };
+          player.load(media, {
+            autoplay: true
+          }, function(err, status) {
+            player.on('status', function(status) {
+              if (status.playerState == "IDLE") {
+                player.stop();
+                // si le volume était demandé, on le remet à la valeur d'origine
+                if (currentVolume[host] > -1) {
+                  //console.log("[assistant-notifier] On repasse le volume de "+host+" à "+Math.round(currentVolume[host]*100)+"%");
+                  _this.prom(client, 'setVolume', {level:currentVolume[host]})
+                  .then(function() {
+                    client.close();
+                    prom_res();
+                  })
+                } else {
                   client.close();
                   prom_res();
                 }
-              });
+              }
             });
-          })
+          });
         })
       })
     })
