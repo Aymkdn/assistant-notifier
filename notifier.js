@@ -2,6 +2,9 @@ var Client = require('castv2-client').Client;
 var DefaultMediaReceiver = require('castv2-client').DefaultMediaReceiver;
 var GoogleTTS = require('google-tts-api');
 var request = require('request-promise-native');
+var textToSpeech = require('@google-cloud/text-to-speech');
+var fs = require('fs');
+var util = require('util');
 
 var AssistantNotifier = function(configuration) {
   this.host = configuration.host;

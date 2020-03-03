@@ -8,6 +8,7 @@
   "license": "MIT",
   "dependencies": {
     "castv2-client": "^1.2.0",
-    "google-tts-api": "0.0.4"
+    "google-tts-api": "0.0.4",
+    "@google-cloud/text-to-speech": "^2.2.0"
   }
 }

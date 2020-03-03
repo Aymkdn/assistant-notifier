@@ -66,9 +66,13 @@ Par exemple, pour que le message soit lu à 80% du volume :
 
 ### Paramètre `voice` (optionnel)
 
-Par défaut, `notifier` utilise la voix produite par le site https://translate.google.fr. Suite à la proposition de [jzarca01](https://github.com/jzarca01/) il est également possible d'utiliser la voix d'IBM ([qu'il est possible de tester/écouter ici](https://text-to-speech-demo.ng.bluemix.net/)).
+Par défaut, `notifier` utilise la voix produite par le site https://translate.google.fr. Il est aussi possible d'utiliser d'autres voix.
 
-Pour cela il faut s'inscrire et obtenir une clé :
+#### IBM
+
+On peut utiliser la voix d'IBM que l'on peut [tester/écouter ici](https://text-to-speech-demo.ng.bluemix.net/).
+
+Pour utiliser cette voix, il faut s'inscrire et obtenir une clé :
   1. Se rendre sur https://www.ibm.com/watson/services/text-to-speech/
   2. Cliquer sur **"Get Started for Free"**
   3. S'inscrire puis valider son email
@@ -76,7 +80,7 @@ Pour cela il faut s'inscrire et obtenir une clé :
   5. Une fois connecté au site, choisir **Francfort** pour *"Sélectionnez une région/un emplacement où effectuer le déploiement"* (**ATTENTION** si le mauvais serveur est sélectionné, votre clé ne fonctionnera pas)
   6. Une fois Francfort choisi pour le serveur, il faut cliquer sur le bouton "Créer" en bas à droite
   7. Vous devriez tomber sur une page qui indique **"Clé API"** et qu'il est possible de copier en cliquant sur l'icone à droite
-  8. Dans le fichier `configuration.json` on va alors inscrire la `source` (à savoir *"IBM@fr-FR_ReneeVoice"*) et la `key` :
+  8. Dans votre fichier `configuration.json` on va alors inscrire la `source` (à savoir *"IBM@fr-FR_ReneeVoice"*) et la `key` :
 
 ```javascript
 "plugins": {
@@ -85,6 +89,30 @@ Pour cela il faut s'inscrire et obtenir une clé :
     "voice":{
       "source":"IBM@fr-FR_ReneeVoice",
       "key":"la clé API récupérée sur le site IBM"
+    }
+  }
+}
+```
+
+#### Google text-to-speech
+
+Google fournit plusieurs voix différentes. Elles sont [listées sur cette page](https://cloud.google.com/text-to-speech/docs/voices?hl=fr).
+
+Pour utiliser une des voix de Google, il faut :
+  1. Aller sur https://console.cloud.google.com/projectselector2/home/dashboard?hl=fr et créer un projet
+  2. S'assurer que votre compte Google Cloud a la facturation activée via https://cloud.google.com/billing/docs/how-to/modify-project?hl=fr
+  3. Activer l'API Cloud Text-to-Speech via https://console.cloud.google.com/flows/enableapi?apiid=texttospeech.googleapis.com&hl=fr
+  4. Créer une clé API via https://console.developers.google.com/apis/credentials
+  5. Dans votre fichier `configuration.json` on va alors inscrire la `source` (à savoir *"google-cloud/text-to-speech@nom-de-la-voix"*) et la `key` créée à l'étape 4 :
+
+Par exemple, si on veut utiliser la voix *fr-FR-Wavenet-B* listée sur [la page des voix](https://cloud.google.com/text-to-speech/docs/voices?hl=fr) :
+```javascript
+"plugins": {
+  "notifier": {
+    "host": "192.168.0.13",
+    "voice":{
+      "source":"google-cloud/text-to-speech@fr-FR-Wavenet-B",
+      "key":"la clé API"
     }
   }
 }
