@@ -68,6 +68,15 @@ AssistantNotifier.prototype.action = function(text) {
       }
     }
 
+    const DEFAULT_CONTENT_TYPE = 'audio/mp3';
+    var defaultNotification = true;
+    var contentType = DEFAULT_CONTENT_TYPE;
+    if(text.startsWith('[')) {
+      contentType = text.split(']')[0].slice(1);
+      text = text.split(']')[1].trim();
+      defaultNotification = false;
+    }
+
     console.log("[assistant-notifier] ("+names+") Lecture du message : "+text);
 
     // on génère le texte
@@ -80,7 +89,7 @@ AssistantNotifier.prototype.action = function(text) {
         currentVolume[host] = -1;
         _this.prom(client, 'connect', host)
         .then(function() {
-          if (_this.volume > -1) {
+          if (_this.volume > -1 && defaultNotification) {
             // on retrouve le volume courant
             return _this.prom(client, 'getVolume')
             .then(function(status) {
@@ -98,7 +107,7 @@ AssistantNotifier.prototype.action = function(text) {
         .then(function(player) {
           var media = {
             contentId: url,
-            contentType: 'audio/mp3',
+            contentType: contentType,
             streamType: 'BUFFERED'
           };
           player.load(media, {
@@ -106,7 +115,9 @@ AssistantNotifier.prototype.action = function(text) {
           }, function(err, status) {
             player.on('status', function(status) {
               if (status.playerState == "IDLE") {
-                player.stop();
+                if(defaultNotification) {
+                  player.stop();
+                }
                 // si le volume était demandé, on le remet à la valeur d'origine
                 if (currentVolume[host] > -1) {
                   //console.log("[assistant-notifier] On repasse le volume de "+host+" à "+Math.round(currentVolume[host]*100)+"%");
@@ -122,6 +133,14 @@ AssistantNotifier.prototype.action = function(text) {
               }
             });
           });
+          if(!defaultNotification) {
+            // terminate this action before the end of a possibly long-running stream,
+            // but not for default notifications, and only after playing has had time to start
+            setTimeout(function() {
+              client.close();
+              prom_res();
+            }, 1000);
+          }
         })
       })
     })
