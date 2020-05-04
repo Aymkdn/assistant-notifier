@@ -140,3 +140,44 @@ Sinon, depuis IFTTT, voici un exemple de comment procéder :
   11. Enregistrer puis cliquer sur **Finish**  
   12. Dites : « OK Google, répète la phrase voilà une belle journée »  
   13. Google Home va dire : « voilà une belle journée »  
+
+### Options
+
+Il existe différentes façons d'utiliser `notifier_` dans la notification Pushbullet : 
+
+#### Lecture d'un texte
+
+Par défaut, vous pouvez simplement passer du texte ; celui-ci sera converti en un MP3 qui sera ensuite lu par l'appareil.
+
+Exemple :
+```
+notifier_Ceci est le texte qui sera lu
+```
+
+#### Lecture d'un MP3 via une URL
+
+Il est également possible de fournir une URL (qui doit commencer par _http_) vers un fichier MP3. Dans ce cas, le MP3 sera directement lu par l'appareil.
+
+Exemple :
+```
+notifier_https://mon.site.com/public/mon_son.mp3
+```
+
+#### Lecture d'un autre type de média
+
+Pour lire un autre type de média, par exemple une image sur votre appareil qui possède un écran, vous devrez indiquer le type de média entre crochets.
+
+Exemple :
+```
+notifier_[image/jpeg]https://mon.site.com/public/mon_image.jpeg
+```
+
+#### Cibler un appareil en particulier
+
+Si vous possédez plusieurs appareils, mais ne souhaitez qu'enclencher la lecture sur l'un d'eux, vous devez utiliser les accolades.
+
+Exemple :
+```
+notifier_{salon} Message qui sera lu
+notifier_{cuisine}[image/jpeg]https://mon.site.com/public/image_recette.jpeg
+```

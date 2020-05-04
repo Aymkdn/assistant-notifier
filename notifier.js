@@ -87,6 +87,12 @@ AssistantNotifier.prototype.action = function(text) {
       gh.forEach(function(host) {
         var client = new Client();
         currentVolume[host] = -1;
+
+        // catch les plantages
+        client.on('error', function(err) {
+          console.log('[assistant-notifier] %s', err);
+        });
+
         _this.prom(client, 'connect', host)
         .then(function() {
           if (_this.volume > -1 && defaultNotification) {
