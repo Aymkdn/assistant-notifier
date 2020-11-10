@@ -100,7 +100,7 @@ Google fournit plusieurs voix différentes. Elles sont [listées sur cette page]
 
 Pour utiliser une des voix de Google, il faut :
   1. Aller sur https://console.cloud.google.com/projectselector2/home/dashboard?hl=fr et créer un projet
-  2. S'assurer que votre compte Google Cloud a la facturation activée via https://cloud.google.com/billing/docs/how-to/modify-project?hl=fr
+  2. S'assurer que votre compte Google Cloud a la facturation activée via https://cloud.google.com/billing/docs/how-to/modify-project?hl=fr – jusqu'à 4 millions de caractères gratuits par mois ([voir les tarifs](https://cloud.google.com/text-to-speech/pricing?hl=fr))
   3. Activer l'API Cloud Text-to-Speech via https://console.cloud.google.com/flows/enableapi?apiid=texttospeech.googleapis.com&hl=fr
   4. Créer une clé API via https://console.developers.google.com/apis/credentials
   5. Dans votre fichier `configuration.json` on va alors inscrire la `source` (à savoir *"google-cloud/text-to-speech@nom-de-la-voix"*) et la `key` créée à l'étape 4 :
