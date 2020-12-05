@@ -1,6 +1,6 @@
 {
   "name": "assistant-notifier",
-  "version": "2.1.10",
+  "version": "2.1.11",
   "description": "Plugin Notifier pour un Assistant via le package assistant-plugins",
   "author": "aymkdn",
   "main": "notifier.js",
@@ -9,6 +9,6 @@
   "dependencies": {
     "@google-cloud/text-to-speech": "^2.3.0",
     "castv2-client": "^1.2.0",
-    "google-tts-api": "0.0.5"
+    "google-tts-api": "0.0.6"
   }
 }
