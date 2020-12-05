@@ -181,3 +181,7 @@ Exemple :
 notifier_{salon} Message qui sera lu
 notifier_{cuisine}[image/jpeg]https://mon.site.com/public/image_recette.jpeg
 ```
+
+## Lancer en ligne de commande
+
+Il est possible de lancer `assistant-notifier` depuis [une ligne de commande](https://github.com/Aymkdn/assistant-plugins/wiki/Utiliser-le-programme-en-ligne-de-commande).
