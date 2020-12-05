@@ -77,9 +77,11 @@ Pour utiliser cette voix, il faut s'inscrire et obtenir une clé :
   2. Cliquer sur **"Get Started for Free"**
   3. S'inscrire puis valider son email
   4. On utilisera le plan gratuit qui permet la synthèse de 10 000 lettres par mois ([voir les tarifs](https://www.ibm.com/cloud/watson-text-to-speech/pricing))
-  5. Une fois connecté au site, choisir **Francfort** pour *"Sélectionnez une région/un emplacement où effectuer le déploiement"* (**ATTENTION** si le mauvais serveur est sélectionné, votre clé ne fonctionnera pas)
+  5. Une fois connecté au site, choisir **Francfort** pour *"Sélectionnez une région"* (**ATTENTION** si le mauvais serveur est sélectionné, votre clé ne fonctionnera pas)
   6. Une fois Francfort choisi pour le serveur, il faut cliquer sur le bouton "Créer" en bas à droite
-  7. Vous devriez tomber sur une page qui indique **"Clé API"** et qu'il est possible de copier en cliquant sur l'icone à droite
+  7. Rendez-vous sur la page des ressources : https://cloud.ibm.com/resources
+  8. Cliquez sur "Services" puis sur "Text to Speech"
+  9. Copiez la clé API fournie sur la page
   8. Dans votre fichier `configuration.json` on va alors inscrire la `source` (à savoir *"IBM@fr-FR_ReneeVoice"*) et la `key` :
 
 ```javascript
